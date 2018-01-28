@@ -1,0 +1,156 @@
+<head>
+    <title>TED: Ideas worth spreading.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    body {
+        background: #FF5F6D;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        padding: 50px 0 0 0;
+    }
+
+    .navbar {
+        border-radius: 0px;
+        padding: 0px;
+    }
+
+    .navbar-brand {
+        font-size: 2em;
+        font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: 200;
+        text-decoration: none;
+        color: white;
+    }
+
+    .navbar-brand:hover {
+        color:#00A0C6;
+        text-decoration:none;
+        cursor:pointer;
+    }
+
+    .brand_name {
+        color: rgb(230, 43, 30);
+        font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: 900;
+    }
+    a {
+        text-decoration: none;
+        font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+        color: black;
+        font-weight: 700;
+        font-size: 1.5em;
+    }
+    a:hover {
+        cursor: auto;
+        text-decoration: none;
+        color:black;
+        opacity: 0.8;
+    }
+    .button, button {
+        background-color: black;
+        font-family: "Roboto", Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        color: #fff;
+        padding: 15px 45px;
+        border-radius: 50px;
+        margin-top: 20px;
+    }
+    .button:hover, button:hover {
+        background-color: white;
+        color: black;
+    }
+    ul {
+        margin: 0;
+        padding-left: 0px;
+        margin-top: 50px;
+        text-align: center;
+    }
+    li{
+        list-style: none;
+        margin-bottom: 20px;
+    }
+    .row {
+        margin-right: 0px;
+         }
+    h3 {
+        font-size: 20px;
+    }
+</style>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"> <span class="brand_name">TED</span>  Ideas Worth Spreading</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <form class="navbar-form navbar-left" role="search" action="/test/submit" method="get">
+                <div class="form-group">
+                    <input type="text" name= "id" class="form-control" placeholder="Search">
+                </div>
+                <button style="margin: 0px" type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </ul>
+    </div>
+</nav>
+
+{{#if page}}
+    <div class="col-md-12" style="margin-top: 25px; font-size: 10px;">
+    <a class="button" href="http://localhost:3000/test/submit?id={{searchKey}}&page={{page}}">Back to results</a>
+    </div>
+    {{/if}}
+<body>
+<div class="row">
+    {{# each item }}
+        <div class="col-md-7" style="margin-left: 10px; margin-top:40px;">
+            <div style="max-width:854px"><div style="position:relative;height:0;padding-bottom:56.25%"><iframe width="854" height="480" style="position:absolute;left:0;top:0;width:100%;height:100%" frameborder="0" scrolling="no" allowfullscreen src={{this.url}}></iframe></div></div>
+            <h2><em><strong>{{this.title}}</strong></em></h2>
+        </div>
+
+        <div class="col-md-4">
+
+            <ul class="nav nav-tabs">
+                <li class="active"><a data-toggle="tab" href="#home">Information</a></li>
+                <li><a data-toggle="tab" href="#menu1">Comments</a></li>
+            </ul>
+
+            <div class="tab-content">
+                <div id="home" class="tab-pane fade in active">
+                    <div>
+                        <h3><strong><em>Description: </em></strong>{{this.description}}</h3>
+                        <h3><strong><em>Held at: </em></strong>{{this.event}}</h3>
+                        <h3><strong><em>Available in: </em></strong>{{this.languages}}<strong><em> languages.</em></strong></h3>
+                        <h3><strong><em>Date of Ted talk: </em></strong>{{this.date}}</h3>
+                        <h3><strong><em>No of views: </em></strong>{{this.views}}</h3>
+                    </div>
+                </div>
+                <div id="menu1" class="tab-pane fade">
+                    <table class="table table-inverse" style="margin-top: 20px;">
+                        {{#each this.comment2}}
+                            <tr>
+                                <td style="border-bottom: solid 1px #ddd; border-top:none;"><h4>{{this}}</h4></td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                    <form action="/add/comment" method="post">
+                        <input type="hidden" name="id" value= {{this._id}}></input>
+                        <textarea rows="4" cols="50" name="usercomment"></textarea>
+                        <button type="submit">Add Comment</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{/each}}
+</div>
+<div class="col-md-12">
+    <form action="/return" method="get">
+        <button type="back">Back to main page</button>
+    </form>
+</div>
+
+</body>

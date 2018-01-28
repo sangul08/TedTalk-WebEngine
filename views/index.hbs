@@ -1,0 +1,209 @@
+<head>
+    <title>TED: Ideas worth spreading.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+
+<style>
+    body {
+        background: #FF5F6D;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        padding: 0px;
+    }
+
+    .navbar {
+        border-radius: 0px;
+        padding: 0px;
+    }
+
+    .navbar-brand {
+        font-size: 2em;
+        font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: 200;
+        text-decoration: none;
+        color: white;
+    }
+
+    .navbar-brand:hover {
+        color:#00A0C6;
+        text-decoration:none;
+        cursor:pointer;
+    }
+
+    .brand_name {
+        color: rgb(230, 43, 30);
+        font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: 900;
+    }
+    #search {
+        padding-top:50px;
+        height:800px;
+        color: #fff;
+        padding: 50px;
+        background: #FF5F6D;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #FFC371, #FF5F6D);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #FFC371, #FF5F6D); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    #popular {
+        padding-top:50px;
+        height:800px;
+        color: #fff;
+        background-color:white;
+        padding-top:20px;
+    }
+    #about {
+        padding-top:50px;
+        height:800px;
+        color: #fff;
+        background: #8e9eab;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    }
+    form {
+        text-align: center;
+        padding-top: 300px;
+    }
+    input {
+        border: none;
+        border-bottom: 2px solid gray;
+        background-color: transparent;
+        width: 500px;
+        color: white;
+        font-size: 2em;
+    }
+    button {
+        background-color: black;
+        font-family: "Roboto", Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        color: #fff;
+        padding: 15px 45px;
+        border-radius: 50px;
+        margin-top: 20px;
+    }
+    button:hover {
+        background-color: white;
+        color: black;
+    }
+    input:focus{
+        outline:none;
+    }
+    .row {
+        margin-top: 10px;
+        margin-left: 2px;
+        margin-right: 2px;
+    }
+    .overlay {
+        position: absolute;
+        bottom: 100%;
+        width: 80%;
+        left: 0;
+        right: 0;
+        background-color: black;
+        overflow: hidden;
+        height:0%;
+        transition: .5s ease;
+        margin-left: 20px;
+    }
+    .col-sm-2 {
+        position: relative;
+        text-align: center;
+
+    }
+    .col-sm-2:hover .overlay {
+        bottom: 0;
+        height: 100%;
+    }
+    .text {
+        white-space: nowrap;
+        color: white;
+        font-size: 20px;
+        position: absolute;
+        overflow: hidden;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+    }
+    img {
+        box-shadow: 10px 10px 10px black;
+    }
+    a {
+        text-decoration: none;
+        font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+    }
+    a:hover {
+        cursor: auto;
+        text-decoration: none;
+    }
+
+</style>
+
+<body data-spy="scroll" data-target=".navbar" data-offset="50">
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"> <span class="brand_name">TED</span>  Ideas Worth Spreading</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="#search">Search</a></li>
+            <li><a href="#popular">Popular</a></li>
+            <li><a href="#about">Team</a></li>
+        </ul>
+    </div>
+</nav>
+<div id="search" class="container-fluid">
+    <div class ="row">
+        <div class="col-md-6" style="padding-top: 150px;"><img src="Images/bg.jpg" alt="Tedtalk" width="100%" height="300px" ></div>
+        <div class="col-md-6">
+            <form action="/test/submit" method="get">
+                <input type="text" name="id" placeholder="Ted talk title/ speaker name"> <br>
+                <button type="submit" class="btn btn-full">Explore!</button>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="popular" class="container-fluid">
+    <div class="row" style="text-align: center;">
+        <div class="col-md 12" style="margin-bottom:100px; padding-top: 50px;">
+            <h3 style="font-size: 32px; color:black; text-align: center; font-weight: 700;"> Most viewed Tedtalks!</h3>
+        </div>
+    </div>
+    <div class="row">
+        {{# each item }}
+            <div class="col-sm-2" style="margin-bottom: 30px">
+                <img src="{{this.images}}" alt="Do schools kill creativity?" style="width:90%; height: 100px; max-height: 100px;">
+                <div class="overlay" >
+                    <div class="text"><a href="/Document/{{this._id}}">Watch</a></div>
+                </div>
+            </div>
+        {{/each}}
+    </div>
+</div>
+
+<div id="about" class="container-fluid">
+    <div class="row" style="text-align: center;">
+        <div class="col-md 12" style="margin-bottom:150px">
+            <h3 style="font-size: 32px; color:white; text-align: center; font-weight: 700;">Team</h3>
+        </div>
+    </div>
+    <div class="row" style="text-align: center;">
+        <div class="col-md-4" style="border-right:solid 3px black; border-radius: 2px">
+            <img src="/Images/avatar_women.png" width="40%"  height="50%" alt="Sanya" style="border-radius:50%; margin-bottom: 20px;">
+            <h4 style="color:white">Sanya Kaur Gulati</h4>
+        </div>
+        <div class="col-md-4" style="border-right:solid 3px black; border-radius: 2px">
+            <img src="/Images/avatar_man.png" width="40%"  height="50%"  alt="Mohammed" style="border-radius:50%; margin-bottom: 20px;">
+            <h4 style="color:white">Mohammed</h4>
+        </div>
+        <div class="col-md-4">
+            <img src="/Images/avatar_man.png" width="40%"  height="50%" alt="Raghu" style="border-radius:50%; margin-bottom: 20px;">
+            <h4 style="color:white">Raghu</h4>
+        </div>
+    </div>
+</div>
+</body>

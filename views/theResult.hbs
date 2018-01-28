@@ -1,0 +1,139 @@
+<head>
+    <title>TED: Ideas worth spreading.</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style>
+    body {
+        background: #8e9eab;  /* fallback for old browsers */
+        background: -webkit-linear-gradient(to right, #eef2f3, #8e9eab);  /* Chrome 10-25, Safari 5.1-6 */
+        background: linear-gradient(to right, #eef2f3, #8e9eab); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+        padding: 50px;
+    }
+
+    .navbar {
+        border-radius: 0px;
+        padding: 0px;
+    }
+
+    .navbar-brand {
+        font-size: 2em;
+        font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: 200;
+        text-decoration: none;
+        color: white;
+    }
+
+    .navbar-brand:hover {
+        color:#00A0C6;
+        text-decoration:none;
+        cursor:pointer;
+    }
+
+    .brand_name {
+        color: rgb(230, 43, 30);
+        font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+        font-weight: 900;
+    }
+    a {
+        text-decoration: none;
+        font-family: "Helvetica Neue Custom","Helvetica Neue",Helvetica,Arial,sans-serif;
+        color: black;
+        font-weight: 700;
+        font-size: 1.5em;
+    }
+    a:hover {
+        cursor: auto;
+        text-decoration: none;
+        color:black;
+        opacity: 0.8;
+    }
+    button {
+        background-color: black;
+        font-family: "Roboto", Helvetica, Arial, sans-serif;
+        font-weight: 800;
+        color: #fff;
+        padding: 15px 45px;
+        border-radius: 50px;
+        margin-top: 20px;
+    }
+    button:hover {
+        background-color: white;
+        color: black;
+    }
+</style>
+<body>
+<nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="/"> <span class="brand_name">TED</span>  Ideas Worth Spreading</a>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <form class="navbar-form navbar-left" role="search" action="/test/submit" method="get">
+                <div class="form-group">
+                    <input type="text" name= "id" class="form-control" placeholder="Search">
+                </div>
+                <button style="margin: 0px" type="submit" class="btn btn-default">Submit</button>
+            </form>
+        </ul>
+    </div>
+</nav>
+<h2 style="margin-bottom: 30px;">Search results for: {{Text}}</h2>
+{{#if item1 }}
+    <div class="col-md-12">
+        <h2>Ooops, No results found!</h2>
+    </div>
+{{/if}}
+{{#if item2}}
+    <div class="col-md-12">
+        <h2>No more result</h2>
+
+            <a style="font-size: 15px; margin-left: 38%;" href="http://localhost:3000/test/submit?id={{Text}}&page={{page-1}}"><button type="back">Go back to search results</button></a>
+
+    </div>
+{{/if}}
+
+
+<table class="table">
+    {{# each item }}
+        <tr> <a href="/Document/{{this._id}}">
+            <td><a href="/Document/{{this._id}}/{{../Text}}/{{../page}}">{{this.title}}<br/></a>{{this.description}}</td>
+            <td style="text-align:center"><em><strong>{{this.main_speaker}}</strong></em></td>
+        </a>
+        </tr>
+    {{/each}}
+</table>
+
+<div>
+    <form action="/return" method="get" style="text-align: center">
+        <button type="back">Back to main page</button>
+    </form>
+
+{{#if page}}
+    {{#if previous}}
+        <a  style="float:left;font-size: 15px;" id="previous"><button type="back">Previous</button></a>
+        <script>
+            //console.log("here");
+            var pg = 0;
+            pg = {{page}};
+            pg = pg -2;
+            var ur = 'http://localhost:3000/test/submit?id={{Text}}&page=' + pg;
+            document.getElementById("previous").setAttribute("href", ur);
+        </script>
+    {{/if}}
+    <a  style="float:right; font-size: 15px;" id="back" href="http://localhost:3000/test/submit?id={{Text}}&page={{page}}"><button type="back">Next</button></a>
+       {{#if pre}}
+        <script> document.getElementById("back").style.display = "none"; </script>
+        {{/if}}
+{{/if}}
+
+
+    </div>
+
+</body>
+
+
+
